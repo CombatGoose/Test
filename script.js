@@ -4,6 +4,12 @@ const buttons = document.querySelectorAll('.add-to-cart')
 
 const cart = document.querySelector('#cart')
 
+const nums = document.querySelectorAll('.num')
+
+const minuses = document.querySelectorAll('.minus')
+
+const pluses = document.querySelectorAll('.plus')
+
 class User {
   constructor(name, email) {
     this.name = name
@@ -41,5 +47,20 @@ buttons.forEach((button) => {
       const productCard = event.target.parentNode
       const productName = productCard.querySelector('h2').innerText
       user.addToCart(productName)
+    })
+  })
+
+
+  minuses.forEach((minus, index) => {
+    minus.addEventListener('click', () => {
+      if (nums[index].innerText > 0) {
+        nums[index].innerText--
+      }
+    })
+  })
+  
+  pluses.forEach((plus, index) => {
+    plus.addEventListener('click', () => {
+      nums[index].innerText++
     })
   })
